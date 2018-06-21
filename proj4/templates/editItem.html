@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="mdl-grid mdl-shadow--2dp form-grid mdl-color--white margin-top-10">
+        <form action="{{url_for('editProductDetails', category = product.category, productId = product.id)}}" class="item-form" method="post" id="bookForm">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-field-text margin-top-5">
+            <input class="mdl-textfield__input" type="text" name="productName" value="{{product.productName}}" id="productname">
+            <label class="mdl-textfield__label" for="productName">Product Name</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-field-text">
+            <input class="mdl-textfield__input" type="text" name="productImage" value="{{product.coverUrl}}" id="coverurl">
+            <label class="mdl-textfield__label" for="productImage">Product Cover Image url</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label input-field-text">
+            <textarea class="mdl-textfield__input" type="text"  name="productDescription" id="description">{{product.description}}</textarea>
+            <label class="mdl-textfield__label" for="productDescription">Description</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth input-field-text">
+
+            <input class="mdl-textfield__input" type="text" name="category" id="category" value="{{product.category}}" readonly tabIndex="-1">
+            <label for="category" class="mdl-textfield__label">Category</label>
+            <ul for="category" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <li class="mdl-menu__item">Kurti</li>
+                <li class="mdl-menu__item">Saree</li>
+                <li class="mdl-menu__item">Patiala</li>
+                <li class="mdl-menu__item">Anarkali</li>
+                <li class="mdl-menu__item">Lehenga</li>
+                <li class="mdl-menu__item">Other</li>
+            </ul>
+            </div>
+
+        <br>
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent input-button mdl-color--teal" onclick="validateDetails()" type="button" value="Edit">
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--grey-300 input-button" href="{{url_for('showBooks')}}">Cancel</a>
+
+      </form>
+</div>
+{% endblock %}
